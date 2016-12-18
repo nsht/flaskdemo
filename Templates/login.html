@@ -1,0 +1,24 @@
+{% extends "header.html" %}
+{% block body %}
+
+
+    <div class="row">
+        <br>
+        <div class="col-lg-2 col-lg-offset-5  text-center" style="background-color:whitesmoke; padding:5px; border-radius:5%">
+            
+                <h4>Please Login:</h4>
+                <br>
+                <form action="" class="form-inline" method="POST">
+                    <input type="text" class="form-control" placeholder="Username" name="username" value="{{request.form.username}}">                    
+                    <input type="password" class="form-control" placeholder="Password" name="password" value="{{request.form.password}}">
+            
+                    <input class="btn btn-default" type="submit" value="Login">
+
+                </form>
+            <p>{{ error  }}</p>
+        </div>
+        
+    </div>
+
+{% endblock %}
+

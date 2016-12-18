@@ -4,8 +4,11 @@
 	<meta charset="utf-8">
 	<title>Flask Demo App</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" 	href="{{url_for('static', filename='favicon.ico')}}">
     <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+	<link href="{{url_for('static', filename='css/main.css')}}" rel="stylesheet">
 </head>
+<body>
 	<header>
 		<nav class="navbar navbar-default navbar-static-top">
 			<div class="container-fluid">
@@ -23,22 +26,46 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-						<li><a href="#">Link</a></li>
+						<li class="active"><a href="/">Home <span class="sr-only">(current)</span></a></li>
+						<li><a href="/dashboard/">Dashboard</a></li>
 					</ul>
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/login/">Login</a></li>
+        <li><a href="/signUp/">Sign Up</a></li>
+      </ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
 	</header>
-<body>
-		<div class="container-fluid" align="center" style="min-height:100%">
+
+		<div class="container-fluid" style="min-height:100%; max-width:90%">
+			{% with messages = get_flashed_messages() %}
+			{% if messages %}
+			{% for message in messages%}
+			<div class="alert alert-warning" role="alert">
+				<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				{{ message }}
+
+			</div>
+			{% endfor%}
+			{% endif %}
+			{% endwith%}
+
+
+
 			{% block body %} {% endblock %}
 		
 
 
 
-		</div>
 
+
+
+</div>
 
 
 
@@ -47,6 +74,15 @@
 	</script>
 
 
+<footer>
+<div class="container-fluid" style="background-color:whitesmoke;height: 35px;">
+    <div class="col-md-12">
+		© 2016 Nishit Mohanan
+
+    </div>
+</div>
+</footer>
+
 
 </body>
 
@@ -54,3 +90,5 @@
 
 
 </html>
+
+		

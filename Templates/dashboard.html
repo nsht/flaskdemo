@@ -2,5 +2,59 @@
 
 {% block body%}
 
+<div>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="active"><a href="#Basic" aria-controls="Basic" role="tab" data-toggle="tab">Basic</a></li>
+    <li role="presentation"><a href="#Web_Dev" aria-controls="Web_Dev" role="tab" data-toggle="tab">Web Dev</a></li>
+    <li role="presentation"><a href="#Analytics" aria-controls="Analytics" role="tab" data-toggle="tab">Analytics</a></li>
+  </ul>
+
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="Basic">
+            <div class="container-fluid" style="margin-top:5px">
+                <div class="col-md-6" style="background-color:whitesmoke">
+                    <ul>
+                        {% for t in t_dict['Basic'] %}
+                        <li>
+                            <a href="{{t[1]}}">{{ t[0] }}</a>
+                        </li>
+
+
+                        {% endfor %}
+                    </ul>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div role="tabpanel" class="tab-pane fade" id="Web_Dev">
+            Nishit
+
+
+        </div>
+
+
+        <div role="tabpanel" class="tab-pane fade" id="Analytics">
+            ...
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
 
 {% endblock %}
