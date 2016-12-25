@@ -1,9 +1,13 @@
 from flask import Flask, render_template, flash, request, url_for, redirect
+from flask_restful import Resource, Api
 from cms import content
 
+todos = {}
 topic_dict = content()
 
 app = Flask(__name__)
+api = Api(app)
+
 app.secret_key = 'some_secret'
 
 @app.route('/')
@@ -40,6 +44,16 @@ def login_page():
 def page_not_found(e):
     return render_template("404.html",error = e)
 
+
+class TodoSimple(Resource):
+    def get(self, todo_id):
+        return {todo_id: todos[todo_id]}
+
+    def put(self, todo_id):
+        todos[todo_id] = request.form['data']
+        return {todo_id: todos[todo_id]}
+
+api.add_resource(TodoSimple, '/<string:todo_id>')
 
 
 # @app.route('/shboard/')
